@@ -6,20 +6,19 @@ import RevealImage from './components/RevealImage.jsx';
 
 function App() {
   return (
-    <div>
-      {/* Título de la página */}
-      <header>
+    <div className="page">
+      <header className="page-header">
         <Title />
       </header>
 
-      {/* Sección de la carta de amor */}
-      <Letter />
+      <main>
+        <Letter />
 
-      {/* Sección final con video e imagen interactiva */}
-      <section className="final-section">
-        <VideoSection />
-        <RevealImage />
-      </section>
+        <section className="final-section" aria-label="Video y foto interactiva">
+          <VideoSection />
+          <RevealImage />
+        </section>
+      </main>
     </div>
   );
 }

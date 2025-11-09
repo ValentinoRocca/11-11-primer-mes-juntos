@@ -1,0 +1,96 @@
+/* === Reset básico === */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Cuerpo de la página */
+body {
+  font-family: sans-serif;  /* Puedes cambiar la fuente por algo más romántico si deseas */
+  background-color: #fdfdfd;  /* Color de fondo suave */
+  color: #333;               /* Color de texto principal */
+}
+
+/* Estilo del título */
+.title {
+  text-align: center;
+  margin: 2rem 0 1.5rem 0;   /* margen superior e inferior */
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+/* Estilo de la sección de la carta */
+.letter-section {
+  max-width: 600px;
+  margin: 0 auto 2rem auto;  /* centrar horizontalmente y dar margen inferior */
+  padding: 1rem 1.5rem;
+  text-align: left;
+  line-height: 1.6;
+  /* Opcional: estilo de fuente para dar apariencia de carta manuscrita
+     font-family: 'Segoe UI', serif;
+     font-style: italic;
+  */
+  background-color: #fffafa; /* Opcional: un fondo ligeramente rosado */
+  border: 1px solid #ffdada; /* Opcional: un borde suave alrededor */
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+/* Estilo de la sección final (video + imagen reveladora) */
+.final-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  margin: 2rem 0;
+  padding: 0 1rem;
+  text-align: center;
+}
+
+/* Asegura que video e imagen no excedan el ancho del contenedor padre en pantallas pequeñas */
+.final-section video,
+.final-section img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Contenedor de la imagen reveladora */
+.reveal-container {
+  position: relative;
+  cursor: pointer;  /* cambia el cursor para indicar interactividad */
+  /* Puedes establecer un ancho fijo si lo deseas, por ejemplo:
+     width: 300px;
+     height: auto;
+     en caso de querer escalar las imágenes a un tamaño específico.
+  */
+}
+
+/* Imágenes dentro del contenedor revelador */
+.reveal-container img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Imagen superior (la que se oculta al hover) */
+.top-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.5s ease;
+  /* La imagen superior cubre a la inferior inicialmente */
+}
+
+/* Imagen inferior (queda de fondo). No es posicionada absoluta para que el contenedor 
+   conserve su altura basada en esta imagen. */
+.bottom-image {
+  /* La imagen inferior estará debajo; al no ser absoluta, 
+     el contenedor 'reveal-container' tendrá esta altura. */
+}
+
+/* Efecto hover: al pasar el mouse sobre el contenedor, ocultamos la imagen superior */
+.reveal-container:hover .top-image {
+  opacity: 0;
+}

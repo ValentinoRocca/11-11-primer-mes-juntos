@@ -1,96 +1,381 @@
-/* === Reset básico === */
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&family=Montserrat:wght@300;400;600&display=swap');
+
+:root {
+  --rose-50: #fff5f9;
+  --rose-100: #ffe2ed;
+  --rose-200: #ffc4d9;
+  --rose-400: #ff7aa2;
+  --berry-500: #b82d65;
+  --berry-700: #5a1737;
+  --paper-color: #fff8f3;
+  --paper-shadow: 0 22px 38px rgba(90, 23, 55, 0.18);
+  --text-dark: #4c1c35;
+  --text-soft: #7a3a58;
+  --glass-background: rgba(255, 255, 255, 0.55);
+  --accent-glow: 0 18px 48px rgba(184, 45, 101, 0.22);
+  --collage-filter: saturate(0.9) brightness(0.7);
+  --gradient-overlay: linear-gradient(135deg, rgba(255, 195, 216, 0.85), rgba(255, 173, 204, 0.65));
+}
+
+/* 💖 Personaliza esta variable con tus fotos de fondo (4–6 ideal) */
+
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* Cuerpo de la página */
+html, body {
+  min-height: 100%;
+}
+
 body {
-  font-family: sans-serif;  /* Puedes cambiar la fuente por algo más romántico si deseas */
-  background-color: #fdfdfd;  /* Color de fondo suave */
-  color: #333;               /* Color de texto principal */
+  font-family: 'Montserrat', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: var(--rose-50);
+  background-image: var(--gradient-overlay);
+  background-attachment: fixed;
+  color: var(--text-dark);
+  -webkit-font-smoothing: antialiased;
+  position: relative;
 }
 
-/* Estilo del título */
-.title {
+body::before,
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* 🌸 Fondo collage romántico */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+
+  /* 📸 Lista de tus fotos (una al lado de otra) */
+  background-image:
+    url('/imagen.jpeg'),
+    url('/imagen2.jpeg'),
+    url('/imagen3.jpeg'),
+    url('/imagen4.jpeg'),
+    url('/imagen5.jpeg'),
+    url('/imagen6.jpeg');
+
+  /* 💫 Distribución horizontal tipo mural */
+  background-repeat: repeat;
+  background-size: 20% auto; /* tres fotos por fila */
+  background-position:
+    0 0,
+    33% 0,
+    66% 0,
+    0 50%,
+    33% 50%,
+    66% 50%;
+
+  /* 🔮 Suavizado del color */
+  filter: brightness(0.9) contrast(0.95) saturate(0.9);
+  opacity: 0.9;
+}
+
+
+body::after {
+  z-index: -1;
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.5), rgba(255, 192, 210, 0.3));
+  mix-blend-mode: lighten;
+}
+
+/* Layout general */
+.page {
+  position: relative;
+  min-height: 100vh;
+  padding: clamp(2.5rem, 4vw, 4rem) clamp(1.5rem, 6vw, 5rem) 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: clamp(2.5rem, 5vw, 4rem);
+}
+
+.page-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  width: min(1100px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2.5rem, 5vw, 4rem);
+}
+
+/* 💌 Hero principal */
+.hero {
   text-align: center;
-  margin: 2rem 0 1.5rem 0;   /* margen superior e inferior */
-  font-size: 2.5rem;
-  font-weight: bold;
+  max-width: 680px;
+  padding: clamp(1.5rem, 4vw, 2.75rem) clamp(1.5rem, 5vw, 3.5rem);
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 32px;
+  border: 1px solid rgba(255, 210, 227, 0.6);
+  box-shadow: 0 18px 40px rgba(90, 23, 55, 0.13);
+  backdrop-filter: blur(14px);
 }
 
-/* Estilo de la sección de la carta */
+.hero-pretitle {
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--rose-400);
+}
+
+.hero-title {
+  margin-top: clamp(0.5rem, 2vw, 1rem);
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(2.8rem, 7vw, 4.4rem);
+  color: var(--berry-500);
+}
+
+.hero-subtitle {
+  margin-top: clamp(0.75rem, 2vw, 1.2rem);
+  color: var(--text-soft);
+  line-height: 1.7;
+  font-size: clamp(1.05rem, 2.5vw, 1.2rem);
+}
+
+/* 💕 Carta */
 .letter-section {
-  max-width: 600px;
-  margin: 0 auto 2rem auto;  /* centrar horizontalmente y dar margen inferior */
-  padding: 1rem 1.5rem;
-  text-align: left;
-  line-height: 1.6;
-  /* Opcional: estilo de fuente para dar apariencia de carta manuscrita
-     font-family: 'Segoe UI', serif;
-     font-style: italic;
-  */
-  background-color: #fffafa; /* Opcional: un fondo ligeramente rosado */
-  border: 1px solid #ffdada; /* Opcional: un borde suave alrededor */
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding-top: clamp(1rem, 3vw, 2rem);
 }
 
-/* Estilo de la sección final (video + imagen reveladora) */
+.letter-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%) rotate(-3deg);
+  width: clamp(160px, 30vw, 220px);
+  height: clamp(36px, 7vw, 48px);
+  background: rgba(255, 218, 235, 0.8);
+  box-shadow: 0 18px 22px rgba(90, 23, 55, 0.12);
+  border-radius: 12px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.letter-paper {
+  position: relative;
+  z-index: 1;
+  width: min(720px, 92vw);
+  padding: clamp(2.5rem, 5vw, 3.75rem) clamp(1.75rem, 5vw, 3.5rem);
+  background: var(--paper-color);
+  border-radius: 28px;
+  border: 1px solid rgba(255, 205, 223, 0.7);
+  box-shadow: var(--paper-shadow);
+  background-image: linear-gradient(to bottom, rgba(255, 210, 226, 0.35) 1.6rem, transparent 1.6rem);
+  background-size: 100% clamp(2.5rem, 6vw, 3rem);
+}
+
+.letter-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(2.1rem, 5vw, 3rem);
+  color: var(--berry-500);
+  margin-bottom: clamp(1.5rem, 3vw, 2rem);
+  text-align: center;
+}
+
+.letter-paragraph {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(1.3rem, 3.2vw, 1.75rem);
+  line-height: 1.9;
+  letter-spacing: 0.02em;
+  color: var(--text-dark);
+}
+
+.letter-paragraph + .letter-paragraph {
+  margin-top: clamp(1.2rem, 3vw, 1.6rem);
+}
+
+.letter-signature {
+  margin-top: clamp(2rem, 4vw, 2.8rem);
+  text-align: right;
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(1.4rem, 3vw, 1.9rem);
+  color: var(--berry-500);
+}
+
+/* 💫 Video + Imagen Reveal */
 .final-section {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: center;
-  gap: 2rem;
-  margin: 2rem 0;
-  padding: 0 1rem;
+  gap: clamp(2rem, 5vw, 3rem);
+}
+
+/* Tarjetas transparentes */
+.romantic-card {
+  width: min(480px, 100%);
+  padding: clamp(1.8rem, 4vw, 2.6rem);
+  background: var(--glass-background);
+  border-radius: 36px;
+  border: 1px solid rgba(255, 210, 227, 0.7);
+  box-shadow: var(--accent-glow);
+  backdrop-filter: blur(14px);
+  position: relative;
+  overflow: hidden;
+}
+
+.section-title {
+  font-family: 'Dancing Script', cursive;
+  font-size: clamp(2.2rem, 5vw, 3rem);
+  color: var(--berry-500);
   text-align: center;
 }
 
-/* Asegura que video e imagen no excedan el ancho del contenedor padre en pantallas pequeñas */
-.final-section video,
-.final-section img {
-  max-width: 100%;
-  height: auto;
+.section-subtitle {
+  margin-top: 0.65rem;
+  text-align: center;
+  font-size: 0.95rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(76, 28, 53, 0.65);
+  font-weight: 600;
 }
 
-/* Contenedor de la imagen reveladora */
-.reveal-container {
+/* ❤️ Marco con corazones */
+.video-frame {
+  margin-top: 2rem;
+  border-radius: 28px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.75);
   position: relative;
-  cursor: pointer;  /* cambia el cursor para indicar interactividad */
-  /* Puedes establecer un ancho fijo si lo deseas, por ejemplo:
-     width: 300px;
-     height: auto;
-     en caso de querer escalar las imágenes a un tamaño específico.
-  */
+  padding: 12px; /* espacio interno para el marco */
 }
 
-/* Imágenes dentro del contenedor revelador */
-.reveal-container img {
+
+
+
+
+.video-player {
   display: block;
-  max-width: 100%;
+  width: 100%;
   height: auto;
+  border-radius: inherit;
 }
 
-/* Imagen superior (la que se oculta al hover) */
-.top-image {
+/* ===== Imagen Reveal ===== */
+
+.reveal-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.reveal-card {
+  --reveal-x: 50%;
+  --reveal-y: 50%;
+  --reveal-size: clamp(4rem, 12vmin, 6rem);
+
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  aspect-ratio: 3 / 4;
+  border-radius: 28px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow:
+    0 14px 40px rgba(90, 23, 55, 0.22),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.82);
+  cursor: pointer;
+  touch-action: none;
+}
+
+.reveal-card img {
   position: absolute;
-  top: 0;
-  left: 0;
-  transition: opacity 0.5s ease;
-  /* La imagen superior cubre a la inferior inicialmente */
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* Imagen inferior (queda de fondo). No es posicionada absoluta para que el contenedor 
-   conserve su altura basada en esta imagen. */
-.bottom-image {
-  /* La imagen inferior estará debajo; al no ser absoluta, 
-     el contenedor 'reveal-container' tendrá esta altura. */
+/* Imagen visible base */
+.reveal-top {
+  z-index: 1;
+  transition: transform 0.35s ease, filter 0.35s ease;
 }
 
-/* Efecto hover: al pasar el mouse sobre el contenedor, ocultamos la imagen superior */
-.reveal-container:hover .top-image {
+/* Imagen sorpresa, recortada por un círculo que sigue el cursor/toque */
+.reveal-bottom {
+  z-index: 2;
   opacity: 0;
+  clip-path: circle(0 at var(--reveal-x) var(--reveal-y));
+  transition: opacity 0.25s ease, clip-path 0.25s ease;
+}
+
+/* Cuando hay interacción (hover o touch activo) */
+.reveal-card.is-active .reveal-bottom {
+  opacity: 1;
+  clip-path: circle(var(--reveal-size) at var(--reveal-x) var(--reveal-y));
+}
+
+.reveal-card.is-active .reveal-top {
+  transform: scale(1.03);
+  filter: brightness(0.9);
+}
+
+/* Hint */
+.reveal-hint {
+  position: absolute;
+  left: 30%;
+  bottom: 1rem;
+  transform: translateX(-50%);
+  padding: 0.5rem 1.6rem;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--berry-500);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.7rem;
+  font-weight: 700;
+  box-shadow: 0 10px 22px rgba(184, 45, 101, 0.22);
+  transition: opacity 0.25s ease;
+}
+
+.reveal-card.is-active .reveal-hint {
+  opacity: 0;
+}
+
+
+/* 📱 Responsive */
+@media (max-width: 768px) {
+  .hero {
+    padding: 2rem 1.5rem;
+  }
+  .section-subtitle {
+    letter-spacing: 0.12em;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding-bottom: 4rem;
+  }
+  .letter-section::before {
+    display: none;
+  }
+  .section-subtitle {
+    font-size: 0.8rem;
+  }
+  .reveal-hint {
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+  }
 }

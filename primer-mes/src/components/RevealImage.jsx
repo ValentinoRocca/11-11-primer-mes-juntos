@@ -33,9 +33,9 @@ export default function RevealImage() {
       className="romantic-card reveal-section"
       aria-labelledby="reveal-title"
     >
-      <h2 id="reveal-title" className="section-title">El rincón secreto</h2>
+      <h2 id="reveal-title" className="section-title">El secreto de Abril</h2>
       <p className="section-subtitle">
-        Mueve el cursor o toca suavemente para descubrir más
+        Deslizar mouse sobre la imagen para descubrir quien sos
       </p>
 
       <div

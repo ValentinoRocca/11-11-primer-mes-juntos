@@ -12,12 +12,17 @@ function CollageBackground() {
     '/imagen3.jpeg',
     '/imagen4.jpeg',
     '/imagen5.jpeg',
-    '/imagen6.jpeg',
-    '/imagen7.jpeg'
+    '/imagen7.jpeg',
+    '/imagen6.jpeg'
   ];
 
+  const im = ['/imagen.jpeg',
+    '/imagen1.jpeg',
+    '/imagen2.jpeg',
+    '/imagen3.jpeg',];
+
   // Duplicamos para que se repita verticalmente
-  const repeated = [...images, ...images, ...images];
+  const repeated = [...images, ...images, ...images, ...im];
 
   return (
     <div className="collage-bg">
